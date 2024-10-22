@@ -53,6 +53,27 @@ namespace MailSender.Controllers
             };
         }
 
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult EmailMessage(EmailMessage emailMessage)
+        {
+            var userId = User.Identity.GetUserId();
+            emailMessage.UserId = userId;
+
+            if (!ModelState.IsValid)
+            {
+                var vm = PrepareEmailVm(emailMessage, userId);
+                return View("EmailMessage", vm);
+            }
+
+            if (emailMessage.Id == 0)
+                _emailRepository.Add(emailMessage);
+            //else //TO DO
+                //_emailRepository.Update(emailMessage);
+
+            return RedirectToAction("Index");
+        }
+
 
 
         public ActionResult About()

@@ -51,14 +51,14 @@
 
             <div class="form-group">
                 @Html.LabelFor(x => x.EmailMessage.EmailFrom)
-                @Html.TextAreaFor(x => x.EmailMessage.EmailFrom,
+                @Html.TextBoxFor(x => x.EmailMessage.EmailFrom,
                     new { @class = "form-control" })
                 @Html.ValidationMessageFor(x => x.EmailMessage.EmailFrom)
             </div>
 
             <div class="form-group">
                 @Html.LabelFor(x => x.EmailMessage.EmailTo)
-                @Html.TextAreaFor(x => x.EmailMessage.EmailTo,
+                @Html.TextBoxFor(x => x.EmailMessage.EmailTo,
                     new { @class = "form-control" })
                 @Html.ValidationMessageFor(x => x.EmailMessage.EmailTo)
             </div>
@@ -73,16 +73,16 @@
             </div>
 
             <div class="form-group">
-                @Html.LabelFor(x => x.EmailMessage.SentDate)
-                @Html.TextBoxFor(x => x.EmailMessage.SentDate,
+                @Html.LabelFor(x => x.EmailMessage.SendDate)
+                @Html.TextBoxFor(x => x.EmailMessage.SendDate,
                 "{0:dd-MM-yyyy}",
                     new
                     {
                         @class = "form-control",
-                        @id = "PaymentDate",
+                        @id = "SendDate",
                         autocomplete = "off"
                     })
-                @Html.ValidationMessageFor(x => x.EmailMessage.SentDate)
+                @Html.ValidationMessageFor(x => x.EmailMessage.SendDate)
             </div>
 
 
@@ -100,6 +100,33 @@
         function generatePdf() {
 
         }
+
+        $(document).ready(function () {
+
+            $.validator.methods.number = function (value, element) {
+                return this.optional(element) || /^-?(?:\d+|\d{1,3}(?:[\s\.,]\d{3})+)(?:[\.,]\d+)?$/.test(value);
+            }
+
+            $.validator.methods.date = function (value, element) {
+                var isChrome = /Chrome/.test(navigator.userAgent) && /Google Inc/.test(navigator.vendor);
+                if (isChrome) {
+                    var d = new Date();
+                    return this.optional(element) || !/Invalid|NaN/.test(new Date(d.toLocaleDateString(value)));
+                } else {
+                    return this.optional(element) || !/Invalid|NaN/.test(new Date(value));
+                }
+            };
+
+
+            $('#SendDate').datepicker({
+                format: "dd-mm-yyyy",
+                language: "pl",
+                multidate: false,
+                autoclose: true,
+                todayHighlight: true,
+                forceParse: false
+            });
+        });
     </script>
 }
 

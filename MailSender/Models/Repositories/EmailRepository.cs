@@ -34,5 +34,15 @@ namespace MailSender.Models.Repositories
                 return context.Statuses.ToList();
             }
         }
+
+        public void Add(EmailMessage emailMessage)
+        {
+            using (var context = new ApplicationDbContext())
+            {
+                emailMessage.CreatedDate = DateTime.Now;
+                context.EmailMessages.Add(emailMessage);
+                context.SaveChanges();
+            }
+        }
     }
 }
