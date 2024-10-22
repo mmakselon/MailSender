@@ -14,7 +14,7 @@
 
 @if (Model != null && Model.Any())
 {
-    <table class="table table-hover table-striped mt-3 mb-5">
+<table>
     <thead>
         <tr>
             <th>Temat</th>
@@ -31,7 +31,6 @@
     <tbody>
         @foreach (var email in Model)
         {
-<tr>
         <td>@email.Subject</td>
         <td>@email.Body</td>
         <td>@email.EmailFrom</td>
@@ -46,7 +45,6 @@
                 Usuń
             </button>       
         </td>
-</tr>
     }
         </tbody>
     </table>
