@@ -40,7 +40,7 @@ namespace MailSender.Models.Domains
         [DisplayName("Data utworzenia")]
         public DateTime CreatedDate { get; set; }
         [DisplayName("Data wysyłki")]
-        public DateTime SendDate { get; set; }
+        public DateTime? SendDate { get; set; }
 
         [DisplayName("Status")]
         public int StatusId { get; set; }

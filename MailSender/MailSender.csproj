@@ -182,6 +182,10 @@
     <Compile Include="Migrations\202410222017469_ChangeAttributName.designer.cs">
       <DependentUpon>202410222017469_ChangeAttributName.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202410222041452_ChangeSendDateAsNullable.cs" />
+    <Compile Include="Migrations\202410222041452_ChangeSendDateAsNullable.designer.cs">
+      <DependentUpon>202410222041452_ChangeSendDateAsNullable.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Domains\EmailMessage.cs" />
     <Compile Include="Models\Domains\Status.cs" />
@@ -321,6 +325,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202410222017469_ChangeAttributName.resx">
       <DependentUpon>202410222017469_ChangeAttributName.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202410222041452_ChangeSendDateAsNullable.resx">
+      <DependentUpon>202410222041452_ChangeSendDateAsNullable.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
