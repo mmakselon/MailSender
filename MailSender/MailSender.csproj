@@ -178,6 +178,10 @@
     <Compile Include="Migrations\202410211905045_AddOnModelCreating.designer.cs">
       <DependentUpon>202410211905045_AddOnModelCreating.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202410222017469_ChangeAttributName.cs" />
+    <Compile Include="Migrations\202410222017469_ChangeAttributName.designer.cs">
+      <DependentUpon>202410222017469_ChangeAttributName.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Domains\EmailMessage.cs" />
     <Compile Include="Models\Domains\Status.cs" />
@@ -314,6 +318,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202410211905045_AddOnModelCreating.resx">
       <DependentUpon>202410211905045_AddOnModelCreating.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202410222017469_ChangeAttributName.resx">
+      <DependentUpon>202410222017469_ChangeAttributName.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
