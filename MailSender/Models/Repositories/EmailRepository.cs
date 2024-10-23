@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Data.Entity;
 using System.Web;
 
 namespace MailSender.Models.Repositories
@@ -13,6 +14,7 @@ namespace MailSender.Models.Repositories
             using (var context = new ApplicationDbContext())
             {
                 return context.EmailMessages
+                    .Include(x => x.Status)
                     .Where(x => x.UserId == userId)
                     .ToList();
             }
@@ -23,6 +25,7 @@ namespace MailSender.Models.Repositories
             using (var context = new ApplicationDbContext())
             {
                 return context.EmailMessages
+                    .Include(x => x.Status)
                     .Single(x => x.Id == id && x.UserId == userId);
             }
         }
@@ -41,7 +44,16 @@ namespace MailSender.Models.Repositories
             {
                 emailMessage.CreatedDate = DateTime.Now;
                 context.EmailMessages.Add(emailMessage);
-                context.SaveChanges();
+
+                try
+                {
+                    context.SaveChanges();
+                }
+                catch (Exception e)
+                {
+                    var message = e.Message;       
+                }
+                
             }
         }
     }

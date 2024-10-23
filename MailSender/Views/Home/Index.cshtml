@@ -37,8 +37,8 @@
         <td>@email.EmailFrom</td>
         <td>@email.EmailTo</td>
         <td>@email.CreatedDate.ToString("dd-MM-yyyy")</td>
-        <td>@email.SendDate.ToString("dd-MM-yyyy")</td>
-        <td>@email.Status.Name</td>
+        <td>@(email.SendDate? .ToString("dd-MM-yyyy") ?? "")</td>
+        <td>@(email.Status? .Name ?? "")</td>
         <td>
             <button 
                 class="btn btn-danger tn-sm"
