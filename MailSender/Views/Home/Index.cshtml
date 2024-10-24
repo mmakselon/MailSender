@@ -40,11 +40,15 @@
         <td>@(email.SendDate? .ToString("dd-MM-yyyy") ?? "")</td>
         <td>@(email.Status? .Name ?? "")</td>
         <td>
-            <button 
+            @*<button 
                 class="btn btn-danger tn-sm"
                 onclick="deleteEmail">
                 Usuń
-            </button>       
+            </button> *@   
+            <button class="btn btn-primary tn-sm"
+                    onclick="sendEmail">
+                Wyślij
+            </button>
         </td>
 </tr>
     }
@@ -61,9 +65,32 @@ else
 @section Scripts
 {
     <script type="text/javascript">
-        function deleteEmail() {
+        function sendEmail(id, btn) {
+
+            $.ajax({
+                type: 'POST',
+                url: "@Url.Action("SendEmail","Home")",
+                data: {
+                    id: id
+                },
+                success: function (data) {
+                    if (data.Success) {
+                        var row = btn.parentNode.parentNode;
+                        row.parentNode.removeChild(row);
+                    } else {
+                        alert(data.Message);
+                    }
+                },
+                error: function (data) {
+                    alert(data.Message);
+                },
+                dataType: 'json'
+            });
+
+        }
+        @*function deleteEmail() {
             if (!confirm("Czy na pewno chcesz usunąć e-mail?"))
                 return;
-        }
+        }*@
     </script>
 }

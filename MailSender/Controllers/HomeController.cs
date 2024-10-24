@@ -5,6 +5,7 @@ using Microsoft.AspNet.Identity;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
 
@@ -76,6 +77,23 @@ namespace MailSender.Controllers
                 //_emailRepository.Update(emailMessage);
 
             return RedirectToAction("Index");
+        }
+
+        [HttpPost]
+        public async Task<ActionResult> SendEmail(int id)
+        {
+            try
+            {
+                var userId = User.Identity.GetUserId();
+                //_invoiceRepository.Delete(id, userId);
+            }
+            catch (Exception exception)
+            {
+                //logowanie do pliku
+                return Json(new { Success = false, Message = exception.Message });
+            }
+
+            return Json(new { Success = true });
         }
 
 
