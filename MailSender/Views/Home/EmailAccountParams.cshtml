@@ -1,0 +1,75 @@
+﻿@model MailSender.Models.Domains.EmailAccountParams
+
+@{ ViewBag.Title = Konfiguracja konta e-mail; }
+
+<h2 class="mb-3">Konfiguracja konta e-mail</h2>
+
+<div class="row">
+    <div class="col-lg-6">
+        @using (Html.BeginForm("AccountParams", "Home"))
+        {
+
+        <p class="alert alert-info mt-4 mb-4">
+            Wszystkie pola są <strong>wymagane</strong>
+        </p> 
+
+                @Html.HiddenFor(x => x.Id)
+                @Html.HiddenFor(x => x.UserId)
+
+                <div class="form-group mt-3">
+                    @Html.LabelFor(x => x.HostSmtp, new { @class = "col-md-2 control-label" })
+                    <div class="col-md-10">
+                        @Html.TextBoxFor(x => x.HostSmtp, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(x => x.HostSmtp)
+                    </div>
+                </div>
+
+                <div class="form-group mt-3">
+                    @Html.LabelFor(x => x.EnableSsl, new { @class = "col-md-2 control-label" })
+                    <div class="col-md-10">
+                        @Html.CheckBoxFor(x => x.EnableSsl, new
+                        { @class = "form-check-input", type = "checkbox", value = "true", id = Model.EnableSsl })
+                        @Html.ValidationMessageFor(x => x.EnableSsl)
+                    </div>
+                </div>
+
+                <div class="form-group mt-3">
+                    @Html.LabelFor(x => x.Port, new { @class = "col-md-2 control-label" })
+                    <div class="col-md-10">
+                        @Html.TextBoxFor(x => x.Port, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(x => x.Port)
+                    </div>
+                </div>
+
+                <div class="form-group mt-3">
+                    @Html.LabelFor(x => x.SenderEmail, new { @class = "col-md-2 control-label" })
+                    <div class="col-md-10">
+                        @Html.TextBoxFor(x => x.SenderEmail, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(x => x.SenderEmail)
+                    </div>
+                </div>
+
+                <div class="form-group mt-3">
+                    @Html.LabelFor(x => x.SenderEmailPassword, new { @class = "col-md-2 control-label" })
+                    <div class="col-md-10">
+                        @Html.TextBoxFor(x => x.SenderEmailPassword, new
+                        { @class = "form-control", type = "password" })
+                        @Html.ValidationMessageFor(x => x.SenderEmailPassword)
+                    </div>
+                </div>
+
+                <div class="form-group mt-3">
+                     @Html.LabelFor(x => x.SenderName, new { @class = "col-   md-2 control-label" })
+                    <div class="col-md-10">
+                        @Html.TextBoxFor(x => x.SenderName, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(x => x.SenderName)
+                    </div>
+                </div>
+
+                <div class="form-group mt-3">
+                    <div class="col-md-offset-2 col-md-10">
+                        <input type="submit" class="btn btn-primary mt-3 mb-5" value="Zapisz" />
+                    </div>
+                </div>}
+    </div>
+</div>

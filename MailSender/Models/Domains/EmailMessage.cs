@@ -12,9 +12,8 @@ namespace MailSender.Models.Domains
     {
         public int Id { get; set; }
 
-        [Required]
-        [DisplayName("E-mail nadawcy")]
-        public string EmailFrom { get; set; }
+        [Required, Display(Name = "E-mail nadawcy:")]
+        public int AccountParamsId { get; set; }
 
         [Required]
         [DisplayName("E-mail odbiorcy")]
@@ -52,6 +51,6 @@ namespace MailSender.Models.Domains
 
         public Status Status { get; set; }
         public ApplicationUser User { get; set; }
-
+        public EmailAccountParams AccountParams { get; set; }
     }
 }

@@ -7,9 +7,14 @@
 <h1 class="mb-3">Rejestr e-maili</h1>
 
 <button 
-    class="btn btn-primary mb-3" 
+    class="btn btn-outline-primary mb-3" 
     onclick='window.location.href="@Url.Action("EmailMessage","Home")"'>
     Dodaj
+</button>
+<button
+        class="btn btn-outline-primary mb-3"
+        onclick='window.location.href="@Url.Action("Accounts","Home")"'>
+    Konta e-mail
 </button>
 
 @if (Model != null && Model.Any())

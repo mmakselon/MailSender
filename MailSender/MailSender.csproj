@@ -187,6 +187,7 @@
       <DependentUpon>202410222041452_ChangeSendDateAsNullable.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Models\Domains\EmailAccountParams.cs" />
     <Compile Include="Models\Domains\EmailMessage.cs" />
     <Compile Include="Models\Domains\Status.cs" />
     <Compile Include="Models\Repositories\EmailRepository.cs" />
@@ -285,6 +286,8 @@
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Home\EmailMessage.cshtml" />
+    <Content Include="Views\Home\EmailAccountParams.cshtml" />
+    <Content Include="Views\Home\Accounts.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
