@@ -13,7 +13,7 @@ namespace MailSender.Models
         }
 
         public DbSet<EmailMessage> EmailMessages { get; set; }
-        public DbSet<EmailAccountParams> AccountParameters { get; set; }
+        public DbSet<EmailAccountParams> EmailAccountsParameters { get; set; }
         public DbSet<Status> Statuses { get; set; }
 
         public static ApplicationDbContext Create()
