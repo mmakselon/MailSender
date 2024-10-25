@@ -13,6 +13,7 @@ namespace MailSender.Models.Domains
         public int Id { get; set; }
 
         [Required, Display(Name = "E-mail nadawcy:")]
+        [ForeignKey("EmailAccountParams")]
         public int AccountParamsId { get; set; }
 
         [Required]
@@ -51,6 +52,6 @@ namespace MailSender.Models.Domains
 
         public Status Status { get; set; }
         public ApplicationUser User { get; set; }
-        public EmailAccountParams AccountParams { get; set; }
+        public EmailAccountParams EmailAccountParams { get; set; }
     }
 }
