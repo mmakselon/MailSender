@@ -194,6 +194,7 @@
     <Compile Include="Models\Domains\EmailAccountParams.cs" />
     <Compile Include="Models\Domains\EmailMessage.cs" />
     <Compile Include="Models\Domains\Status.cs" />
+    <Compile Include="Models\Repositories\EmailAccountParamsRepository.cs" />
     <Compile Include="Models\Repositories\EmailRepository.cs" />
     <Compile Include="Models\ViewModels\AddPhoneNumberViewModel.cs" />
     <Compile Include="Models\Domains\ApplicationUser.cs" />

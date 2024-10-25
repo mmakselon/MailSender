@@ -14,6 +14,7 @@ namespace MailSender.Controllers
     public class HomeController : Controller
     {
         private EmailRepository _emailRepository = new EmailRepository();
+        private EmailAccountParamRepository _emailAccountParamRepository = new EmailAccountParamRepository();
 
         public ActionResult Index()
         {
@@ -58,6 +59,13 @@ namespace MailSender.Controllers
             };
         }
 
+        public ActionResult Accounts()
+        {
+            var userId = User.Identity.GetUserId();
+            var emailParameters = _emailParametersRepository.GetEmailParameters(userId);
+            return View(emailParameters);
+        }
+
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult EmailMessage(EmailMessage emailMessage)
@@ -95,7 +103,6 @@ namespace MailSender.Controllers
 
             return Json(new { Success = true });
         }
-
 
 
         public ActionResult About()
