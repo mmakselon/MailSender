@@ -14,7 +14,7 @@ namespace MailSender.Controllers
     public class HomeController : Controller
     {
         private EmailRepository _emailRepository = new EmailRepository();
-        private EmailAccountParamsRepository _emailAccountParamRepository = new EmailAccountParamsRepository();
+        private EmailAccountParamsRepository _emailAccountParamsRepository = new EmailAccountParamsRepository();
 
         public ActionResult Index()
         {
@@ -62,8 +62,42 @@ namespace MailSender.Controllers
         public ActionResult Accounts()
         {
             var userId = User.Identity.GetUserId();
-            var emailParameters = _emailAccountParamRepository.GetEmailParameters(userId);
+            var emailParameters = _emailAccountParamsRepository.GetEmailParameters(userId);
             return View(emailParameters);
+        }
+
+        public ActionResult EmailAccountParams(int id = 0)
+        {
+            var userId = User.Identity.GetUserId();
+            var emailAccountParams = id == 0 ?
+                AddEmailParams(userId) : _emailAccountParamsRepository.GetEmailParameters(id, userId);
+
+
+            return View(emailAccountParams);
+        }
+
+        private EmailAccountParams AddEmailParams(string userId)
+        {
+            return new EmailAccountParams
+            {
+                UserId = userId
+            };
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult EmailAccountParams(EmailAccountParams emailAccountParams)
+        {
+            var userId = User.Identity.GetUserId();
+            emailAccountParams.UserId = userId;
+
+            if (emailAccountParams.Id == 0)
+                _emailAccountParamsRepository.AddNewAccount(emailAccountParams);
+            else
+                _emailAccountParamsRepository.UpdateAccount(emailAccountParams);
+
+            return RedirectToAction("Accounts");
+
         }
 
         [HttpPost]
