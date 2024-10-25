@@ -14,7 +14,7 @@ namespace MailSender.Controllers
     public class HomeController : Controller
     {
         private EmailRepository _emailRepository = new EmailRepository();
-        private EmailAccountParamRepository _emailAccountParamRepository = new EmailAccountParamRepository();
+        private EmailAccountParamsRepository _emailAccountParamRepository = new EmailAccountParamsRepository();
 
         public ActionResult Index()
         {
@@ -62,7 +62,7 @@ namespace MailSender.Controllers
         public ActionResult Accounts()
         {
             var userId = User.Identity.GetUserId();
-            var emailParameters = _emailParametersRepository.GetEmailParameters(userId);
+            var emailParameters = _emailAccountParamRepository.GetEmailParameters(userId);
             return View(emailParameters);
         }
 
