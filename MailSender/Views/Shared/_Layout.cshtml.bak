@@ -27,8 +27,8 @@
                         @Html.ActionLink("Kontakt", "Contact", "Home", null, new { @class = "nav-link" })
                     </li>
                 </ul>
+                @Html.Partial("_LoginPartial")
             </div>
-            @Html.Partial("_LoginPartial")
         </div>
 
     </nav>
