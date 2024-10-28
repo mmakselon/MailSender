@@ -38,10 +38,10 @@ namespace MailSender.Controllers
             return View(vm);
         }
 
-        private EditEmailMessageViewModel PrepareEmailVm(
+        private EmailMessageViewModel PrepareEmailVm(
             EmailMessage email, string userId)
         {
-            return new EditEmailMessageViewModel
+            return new EmailMessageViewModel
             {
                 EmailMessage = email,
                 Heading = email.Id == 0 ? "Dodawanie nowego E-maila" :

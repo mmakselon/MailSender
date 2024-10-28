@@ -6,10 +6,11 @@ using System.Web;
 
 namespace MailSender.Models.ViewModels
 {
-    public class EditEmailMessageViewModel
+    public class EmailMessageViewModel
     {
 
         public EmailMessage EmailMessage { get; set; }
+        public List<EmailAccountParams> EmailAccountsParameters { get; set; }
         public List<Status> Statuses { get; set; }
 
         public string Heading { get; set; }

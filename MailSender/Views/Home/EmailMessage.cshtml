@@ -1,4 +1,4 @@
-﻿@model MailSender.Models.ViewModels.EditEmailMessageViewModel
+﻿@model MailSender.Models.ViewModels.EmailMessageViewModel
 
 @{
     ViewBag.Title ="E-mail";
@@ -34,6 +34,13 @@
 
             @Html.HiddenFor(x => x.EmailMessage.Id)
             @Html.HiddenFor(x => x.EmailMessage.UserId)
+
+            <div class="form-group mt-3">
+                @Html.LabelFor(x => x.EmailMessage.EmailAccountParams.Id)
+                @Html.DropDownListFor(x => x.EmailMessage.EmailAccountParams.Id,
+               new SelectList(Model.EmailAccountsParameters, "Id", "SenderName"),
+                    "--Wybierz konto--", new { @class = "form-control" })
+            </div>
 
             <div class="form-group">
                 @Html.LabelFor(x => x.EmailMessage.Subject)
