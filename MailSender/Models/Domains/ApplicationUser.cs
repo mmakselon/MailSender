@@ -14,9 +14,11 @@ namespace MailSender.Models
         public ApplicationUser()
         {
             EmailMessages = new Collection<EmailMessage>();
+            EmailAccountsParameters = new Collection<EmailAccountParams>();
         }
 
         public ICollection<EmailMessage> EmailMessages { get; set; }
+        public ICollection<EmailAccountParams> EmailAccountsParameters { get; set; }
 
         public async Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<ApplicationUser> manager)
         {
