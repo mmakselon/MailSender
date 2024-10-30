@@ -44,9 +44,10 @@ namespace MailSender.Controllers
             return new EmailMessageViewModel
             {
                 EmailMessage = email,
-                Heading = email.Id == 0 ? "Dodawanie nowego E-maila" :
-                "E-mail",
-                Statuses = _emailRepository.GetStatuses()
+                Heading = email.Id == 0 ? "Nowa wiadomość e-mail" :
+                "Wiadomość e-mail",
+                Statuses = _emailRepository.GetStatuses(),
+                EmailAccountsParameters = _emailAccountParamsRepository.GetEmailParameters(userId)
             };
         }
 

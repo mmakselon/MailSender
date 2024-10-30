@@ -15,6 +15,7 @@ namespace MailSender.Models.Repositories
             {
                 return context.EmailMessages
                     .Include(x => x.Status)
+                    .Include(x=> x.EmailAccountParams)
                     .Where(x => x.UserId == userId)
                     .ToList();
             }
@@ -26,6 +27,7 @@ namespace MailSender.Models.Repositories
             {
                 return context.EmailMessages
                     .Include(x => x.Status)
+                    .Include(x=>x.EmailAccountParams)
                     .Single(x => x.Id == id && x.UserId == userId);
             }
         }
