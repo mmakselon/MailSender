@@ -190,6 +190,10 @@
     <Compile Include="Migrations\202410242046066_AddEmailAccountParams.designer.cs">
       <DependentUpon>202410242046066_AddEmailAccountParams.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202410302133587_ChangingEmailMessages.cs" />
+    <Compile Include="Migrations\202410302133587_ChangingEmailMessages.designer.cs">
+      <DependentUpon>202410302133587_ChangingEmailMessages.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Domains\EmailAccountParams.cs" />
     <Compile Include="Models\Domains\EmailMessage.cs" />
@@ -339,6 +343,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202410242046066_AddEmailAccountParams.resx">
       <DependentUpon>202410242046066_AddEmailAccountParams.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202410302133587_ChangingEmailMessages.resx">
+      <DependentUpon>202410302133587_ChangingEmailMessages.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
