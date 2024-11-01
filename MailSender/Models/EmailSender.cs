@@ -1,4 +1,5 @@
-﻿using MailSender.Models.Domains;
+﻿using MailSender.Extensions;
+using MailSender.Models.Domains;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -43,6 +44,9 @@ namespace MailSender.Models
             _mail.Subject = emailMessage.Subject;
             _mail.BodyEncoding = Encoding.UTF8;
             _mail.SubjectEncoding = Encoding.UTF8;
+
+            _mail.AlternateViews.Add(AlternateView.CreateAlternateViewFromString(
+                emailMessage.Body.StripHTML(), null, MediaTypeNames.Text.Plain));
 
             _mail.AlternateViews.Add(AlternateView.CreateAlternateViewFromString(
                 emailMessage.Body, null, MediaTypeNames.Text.Html));
