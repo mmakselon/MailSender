@@ -1,4 +1,5 @@
-﻿using MailSender.Models.Domains;
+﻿using MailSender.Models;
+using MailSender.Models.Domains;
 using MailSender.Models.Repositories;
 using MailSender.Models.ViewModels;
 using Microsoft.AspNet.Identity;
@@ -15,6 +16,7 @@ namespace MailSender.Controllers
     {
         private EmailRepository _emailRepository = new EmailRepository();
         private EmailAccountParamsRepository _emailAccountParamsRepository = new EmailAccountParamsRepository();
+        private EmailSender _emailSender;
 
         public ActionResult Index()
         {
@@ -103,23 +105,22 @@ namespace MailSender.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult EmailMessage(EmailMessage emailMessage)
+        public async Task<ActionResult> EmailMessage(EmailMessage emailMessage)
         {
             var userId = User.Identity.GetUserId();
-            emailMessage.UserId = userId;
-
-            if (!ModelState.IsValid)
+            var emailParameters = _emailAccountParamsRepository.GetEmailParameters(emailMessage.EmailAccountParams.Id, userId);
+            try
             {
-                var vm = PrepareEmailVm(emailMessage, userId);
-                return View("EmailMessage", vm);
+                _emailSender = new EmailSender(emailParameters);
+                await _emailSender.Send(emailMessage);
+            }
+            catch (Exception ex)
+            {
+                //Logger.Error(ex, ex.Message);
             }
 
-            if (emailMessage.Id == 0)
-                _emailRepository.Add(emailMessage);
-            //else //TO DO
-                //_emailRepository.Update(emailMessage);
-
             return RedirectToAction("Index");
+
         }
 
         [HttpPost]

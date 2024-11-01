@@ -5,6 +5,7 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Web;
+using System.Web.Mvc;
 
 namespace MailSender.Models.Domains
 {
@@ -31,6 +32,7 @@ namespace MailSender.Models.Domains
         public string Subject { get; set; }
 
         [Required]
+        [AllowHtml]
         [DisplayName("Treść wiadomości")]
         public string Body { get; set; }
 
