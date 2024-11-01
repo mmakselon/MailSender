@@ -53,6 +53,7 @@ namespace MailSender.Models.Repositories
                 }
                 catch (Exception e)
                 {
+                    //logger
                     var message = e.Message;       
                 }
                 

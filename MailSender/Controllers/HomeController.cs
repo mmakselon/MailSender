@@ -113,6 +113,8 @@ namespace MailSender.Controllers
             {
                 _emailSender = new EmailSender(emailParameters);
                 await _emailSender.Send(emailMessage);
+                _emailRepository.Add(emailMessage);
+
             }
             catch (Exception ex)
             {
