@@ -109,6 +109,8 @@ namespace MailSender.Controllers
         {
             var userId = User.Identity.GetUserId();
             var emailParameters = _emailAccountParamsRepository.GetEmailParameters(emailMessage.EmailAccountParams.Id, userId);
+            emailMessage.EmailAccountParams = emailParameters;
+
             try
             {
                 _emailSender = new EmailSender(emailParameters);

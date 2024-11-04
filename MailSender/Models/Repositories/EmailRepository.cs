@@ -45,6 +45,8 @@ namespace MailSender.Models.Repositories
             using (var context = new ApplicationDbContext())
             {
                 emailMessage.CreatedDate = DateTime.Now;
+                emailMessage.AccountParamsId = emailMessage.EmailAccountParams.Id;
+
                 context.EmailMessages.Add(emailMessage);
 
                 try
