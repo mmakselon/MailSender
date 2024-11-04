@@ -13,7 +13,7 @@ namespace MailSender.Models.Domains
     {
         public int Id { get; set; }
 
-        [Required, Display(Name = "E-mail nadawcy:")]
+        [Required, Display(Name = "Nadawca:")]
         [ForeignKey("EmailAccountParams")]
         public int AccountParamsId { get; set; }
 
