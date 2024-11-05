@@ -29,7 +29,7 @@
             <th>Data utworzenia</th>
             <th>Data wysyłki</th>
             <th>Status</th>
-            <th></th>
+            <th>NARZĘDZIA</th>
         </tr>
     </thead>
 
@@ -52,15 +52,21 @@
             <td>@(email.SendDate? .ToString("dd-MM-yyyy") ?? "")</td>
             <td class="@rowClass">@(email.Status? .Name ?? "")</td>
             <td>
-                @*<button
-            class="btn btn-danger tn-sm"
-            onclick="deleteEmail">
-            Usuń
-        </button> *@
-                <button class="btn btn-primary tn-sm"
-                        onclick="sendEmail">
-                    Wyślij
-                </button>
+                @if (email.Status.Name != "wysłana")
+                {
+                    <button class="btn btn-outline-success tn-sm"
+                            onclick="sendEmail">
+                        Wyślij
+                    </button>
+                    <button class="btn btn-outline-primary tn-sm"
+                            onclick="editEmail">
+                        Edytuj
+                    </button>
+                    <button class="btn btn-outline-danger tn-sm"
+                            onclick="deleteEmail">
+                        Usuń
+                    </button>
+                }
             </td>
         </tr>
     }
