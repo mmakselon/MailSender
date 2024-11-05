@@ -36,6 +36,13 @@
     <tbody>
         @foreach (var email in Model)
         {
+            var rowClass = email.Status.Name
+                switch
+            {
+                "wysłana" => "row-sent",
+                "przygotowana" => "row-prepared",
+                "niepowodzenie" => "row-failed"
+            };
         <tr>
             <td>@email.Subject</td>
             <td>@email.Body</td>
@@ -43,13 +50,13 @@
             <td>@email.EmailTo</td>
             <td>@email.CreatedDate.ToString("dd-MM-yyyy")</td>
             <td>@(email.SendDate? .ToString("dd-MM-yyyy") ?? "")</td>
-            <td>@(email.Status? .Name ?? "")</td>
+            <td class="@rowClass">@(email.Status? .Name ?? "")</td>
             <td>
                 @*<button
-                class="btn btn-danger tn-sm"
-                onclick="deleteEmail">
-                Usuń
-            </button> *@
+            class="btn btn-danger tn-sm"
+            onclick="deleteEmail">
+            Usuń
+        </button> *@
                 <button class="btn btn-primary tn-sm"
                         onclick="sendEmail">
                     Wyślij

@@ -22,3 +22,15 @@ select,
 textarea {
     max-width: 280px;
 }
+
+.row-sent {
+    background-color: #8bc34a !important;
+}
+
+.row-prepared {
+    background-color: #ffeb3b !important;
+}
+
+.row-failed {
+    background-color: #f44336 !important;
+}
