@@ -40,6 +40,14 @@ namespace MailSender.Models.Repositories
             }
         }
 
+        public Status GetStatus(string name)
+        {
+            using (var context = new ApplicationDbContext())
+            {
+                return context.Statuses.FirstOrDefault(x => x.Name == name);
+            }
+        }
+
         public void Add(EmailMessage emailMessage)
         {
             using (var context = new ApplicationDbContext())

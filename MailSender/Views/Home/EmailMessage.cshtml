@@ -63,14 +63,14 @@
                 @Html.ValidationMessageFor(x => x.EmailMessage.EmailTo)
             </div>
 
-            <div class="form-group">
+            @*<div class="form-group">
                 @Html.LabelFor(x => x.EmailMessage.StatusId)
                 @Html.DropDownListFor(x => x.EmailMessage.StatusId,
                 new SelectList(Model.Statuses, "Id", "Name"),
                 "-- Wybierz status --",
                     new { @class = "form-control" })
                 @Html.ValidationMessageFor(x => x.EmailMessage.StatusId)
-            </div>
+            </div>*@
 
             <div class="form-group">
                 @Html.LabelFor(x => x.EmailMessage.SendDate)

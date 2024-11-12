@@ -112,10 +112,13 @@ namespace MailSender.Controllers
 
             try
             {
+                emailMessage.Status = _emailRepository.GetStatus("przygotowana");
+
                 if (action == "saveAndSend")
                 {
                     _emailSender = new EmailSender(emailParameters);
                     await _emailSender.Send(emailMessage);
+                    emailMessage.Status = _emailRepository.GetStatus("wysłana");
                 }
                 _emailRepository.Add(emailMessage);
 
@@ -123,6 +126,8 @@ namespace MailSender.Controllers
             catch (Exception ex)
             {
                 //Logger.Error(ex, ex.Message);
+                emailMessage.Status = _emailRepository.GetStatus("niepowodzenie");
+                //też zapis
             }
 
             return RedirectToAction("Index");
