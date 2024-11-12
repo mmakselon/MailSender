@@ -105,15 +105,18 @@ namespace MailSender.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> EmailMessage(EmailMessage emailMessage)
+        public async Task<ActionResult> EmailMessage(string action, EmailMessage emailMessage)
         {
             var userId = User.Identity.GetUserId();
             var emailParameters = _emailAccountParamsRepository.GetEmailParameters(emailMessage.EmailAccountParams.Id, userId);
 
             try
             {
-                _emailSender = new EmailSender(emailParameters);
-                await _emailSender.Send(emailMessage);
+                if (action == "saveAndSend")
+                {
+                    _emailSender = new EmailSender(emailParameters);
+                    await _emailSender.Send(emailMessage);
+                }
                 _emailRepository.Add(emailMessage);
 
             }
